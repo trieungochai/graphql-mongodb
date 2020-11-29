@@ -12,8 +12,12 @@ export class LessonService {
     @InjectRepository(Lesson) private lessonRepository: Repository<Lesson>,
   ) {}
 
-  async getLesson(id: string): Promise<Lesson>{
+  async getLesson(id: string): Promise<Lesson> {
     return this.lessonRepository.findOne({ id });
+  }
+
+  async getAllLessons(): Promise<Lesson[]> {
+    return this.lessonRepository.find();
   }
 
   async createLesson(createLessonInput: CreateLessonInput): Promise<Lesson> {
